@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main()
+{
+    char ch;
+    int spaces = 0, tabs = 0, newlines = 0;
+
+    printf("Enter the text (Press Ctrl+D in Linux/Mac or Ctrl+Z then Enter in Windows to stop):\n");
+
+    while ((ch = getchar()) != EOF)
+    {
+        if (ch == ' ')
+            spaces++;
+        else if (ch == '\t')
+            tabs++;
+        else if (ch == '\n')
+            newlines++;
+    }
+
+    printf("\n----- Output -----\n");
+    printf("Number of White Spaces : %d\n", spaces);
+    printf("Number of Tabs         : %d\n", tabs);
+    printf("Number of New Lines    : %d\n", newlines);
+
+    return 0;
+}
