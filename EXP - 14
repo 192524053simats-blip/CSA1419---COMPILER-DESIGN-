@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main()
+{
+    char expr[100];
+    char temp1 = 't', temp2 = 't';
+    int i;
+
+    printf("Enter expression (example: a+b*c): ");
+    scanf("%s", expr);
+
+    for (i = 0; expr[i] != '\0'; i++)
+    {
+        if (expr[i] == '*' || expr[i] == '/')
+        {
+            printf("t1 = %c %c %c\n",
+                   expr[i - 1],
+                   expr[i],
+                   expr[i + 1]);
+
+            printf("t2 = %c %c t1\n",
+                   expr[i - 3],
+                   expr[i - 2]);
+
+            return 0;
+        }
+    }
+
+    for (i = 0; expr[i] != '\0'; i++)
+    {
+        if (expr[i] == '+' || expr[i] == '-')
+        {
+            printf("t1 = %c %c %c\n",
+                   expr[i - 1],
+                   expr[i],
+                   expr[i + 1]);
+            return 0;
+        }
+    }
+
+    printf("Invalid expression\n");
+
+    return 0;
+}
