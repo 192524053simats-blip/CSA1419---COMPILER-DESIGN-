@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Symbol
+{
+    char name[30];
+    char type[20];
+    int address;
+};
+
+int main()
+{
+    struct Symbol table[50];
+    int n = 0, choice, i;
+    char name[30];
+
+    while (1)
+    {
+        printf("\n1. Insert\n");
+        printf("2. Display\n");
+        printf("3. Search\n");
+        printf("4. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 1)
+        {
+            printf("Enter symbol name: ");
+            scanf("%s", table[n].name);
+
+            printf("Enter type: ");
+            scanf("%s", table[n].type);
+
+            printf("Enter address: ");
+            scanf("%d", &table[n].address);
+
+            n++;
+        }
+        else if (choice == 2)
+        {
+            printf("\nSymbol\tType\tAddress\n");
+
+            for (i = 0; i < n; i++)
+                printf("%s\t%s\t%d\n",
+                       table[i].name,
+                       table[i].type,
+                       table[i].address);
+        }
+        else if (choice == 3)
+        {
+            printf("Enter symbol to search: ");
+            scanf("%s", name);
+
+            for (i = 0; i < n; i++)
+            {
+                if (strcmp(table[i].name, name) == 0)
+                {
+                    printf("Symbol found\n");
+                    printf("Type: %s\n", table[i].type);
+                    printf("Address: %d\n", table[i].address);
+                    break;
+                }
+            }
+
+            if (i == n)
+                printf("Symbol not found\n");
+        }
+        else if (choice == 4)
+        {
+            break;
+        }
+        else
+        {
+            printf("Invalid choice\n");
+        }
+    }
+
+    return 0;
+}
